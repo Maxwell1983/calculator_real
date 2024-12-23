@@ -1,0 +1,20 @@
+name: calculator_app
+description: A simple calculator app with unit conversion functionality.
+
+# Minimum Flutter SDK version required
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.0.5 # For state management to handle dynamic updates in the app
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0 # Includes default linting rules for cleaner code
+
+flutter:
+  uses-material-design: true

@@ -1,0 +1,9 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    prefer_const_constructors: true # Prefer using const where possible
+    always_specify_types: true # Require specifying variable types explicitly
+    avoid_print: true # Avoid using print statements for debugging
+    prefer_final_fields: true # Use final fields unless reassignment is needed
+    prefer_const_declarations: true # Use const for variables that never change
