@@ -9,7 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  provider: ^6.0.5 # For state management to handle dynamic updates in the app
+  intl: ^0.20.1
+  sqflite: ^2.4.1
+  provider: ^6.1.2 # For state management to handle dynamic updates in the app
 
 dev_dependencies:
   flutter_test:

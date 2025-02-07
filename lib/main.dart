@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'model.dart';
-import 'view.dart';
-import 'controller.dart';
+import 'models/model.dart';
+import 'views/view.dart';
+import 'controller/controller.dart';
 
 void main() {
   runApp(MyApp());

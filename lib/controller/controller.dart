@@ -1,19 +1,21 @@
-import 'model.dart';
+import '../models/model.dart';
 
 class CalculatorController {
   final CalculatorModel model;
 
   CalculatorController(this.model);
 
-  void onButtonPressed(String value) {
+  void onButtonPressed(String value) async {
     if (value == 'C') {
       model.clearInput();
     } else if (value == '=') {
-      model.calculateResult();
+
+      await model.calculateResult(); // Add calculation to history
     } else {
       model.addInput(value);
     }
   }
+
 
   void onConversionButtonPressed(String value) {
     if (value == '=') {

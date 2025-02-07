@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'model.dart';
-import 'controller.dart';
+import '../models/model.dart';
+import '../controller/controller.dart';
+import '../views/history_screen.dart';
 
 class CalculatorView extends StatelessWidget {
   @override
@@ -11,7 +12,7 @@ class CalculatorView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Calculator'),
+        title: Text('KALKULAATOR'),
       ),
       body: Column(
         children: [
@@ -37,6 +38,7 @@ class CalculatorView extends StatelessWidget {
                 _buildButtonRow(context, ['1', '2', '3', '-'], controller),
                 _buildButtonRow(context, ['C', '0', '.', '+'], controller),
                 _buildButtonRow(context, ['km → m', '='], controller, isConversion: true),
+                _buildButtonRow(context, ['History'], controller),
               ],
             ),
           ),
@@ -58,12 +60,7 @@ class CalculatorView extends StatelessWidget {
     );
   }
 
-  Widget _buildButtonRow(
-      BuildContext context,
-      List<String> buttons,
-      CalculatorController controller, {
-        bool isConversion = false,
-      }) {
+  Widget _buildButtonRow(BuildContext context, List<String> buttons, CalculatorController controller, { bool isConversion = false }) {
     return Expanded(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -71,18 +68,15 @@ class CalculatorView extends StatelessWidget {
           return Expanded(
             child: ElevatedButton(
               onPressed: () {
-                if (isConversion && button == 'km → m') {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ConversionView()),
-                  );
+                if (button == 'km → m') {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ConversionView()));
+                } else if (button == 'History') { // Add History button
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => HistoryScreen()));
                 } else {
                   controller.onButtonPressed(button);
                 }
               },
-              child: Text(
-                button,
-                style: TextStyle(fontSize: 20),
-              ),
+              child: Text(button, style: TextStyle(fontSize: 20)),
             ),
           );
         }).toList(),
@@ -142,6 +136,7 @@ class ConversionView extends StatelessWidget {
     );
   }
 
+  // Move `_buildConversionButtonRow` inside the `ConversionView` class
   Widget _buildConversionButtonRow(
       BuildContext context,
       List<String> buttons,
